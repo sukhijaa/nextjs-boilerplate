@@ -1,5 +1,6 @@
 import { mergeObjects } from 'utils/helpers';
 import color from 'color';
+import {createMuiTheme} from '@material-ui/core/styles';
 
 const themeList = {};
 
@@ -43,7 +44,8 @@ themeList.main = {
     text: '#000000',
     textAlt: '#ffffff',
     textReadonly: color.rgb(237, 202, 216)
-  }
+  },
+  ...createMuiTheme()
 };
 
 themeList.inverted = themeList.extend('main', {

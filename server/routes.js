@@ -6,12 +6,14 @@ const ROUTE_NAMES = {
   ARTICLES: 'articles',
   SINGLE_ARTICLE: 'article',
   TEST_SINGLE_ARTICLE: 'testSingle',
+  AUTHORS: 'authors'
 };
 
 const ALL_ROUTES = [
   {name: ROUTE_NAMES.INDEX, pattern: '/', page: 'index'},
   {name: ROUTE_NAMES.DETAILS, pattern: '/details', page: 'details'},
   {name: ROUTE_NAMES.ARTICLES, pattern: '/articles', page: 'articles'},
+  {name: ROUTE_NAMES.AUTHORS, pattern: '/authors', page: 'allAuthors'},
   {
     name: ROUTE_NAMES.SINGLE_ARTICLE,
     pattern: '/article/:slug',

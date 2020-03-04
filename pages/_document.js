@@ -1,54 +1,51 @@
-import Document, { Head, Main, NextScript } from 'next/document';
-import Helmet from 'react-helmet';
-import { ServerStyleSheet } from 'styled-components';
-import AppIcons from 'components/AppIcons';
+import React from 'react'
+import NextDocument, {Head, Main, NextScript} from 'next/document'
+import { ServerStyleSheet as StyledComponentSheets } from 'styled-components'
+import { ServerStyleSheets as MaterialUiServerStyleSheets } from '@material-ui/styles'
 
-export default class MyDocument extends Document {
-  static async getInitialProps({ renderPage }) {
-    const sheet = new ServerStyleSheet();
-    const page = renderPage(App => props =>
-      sheet.collectStyles(<App {...props} />)
-    );
-    const styleTags = sheet.getStyleElement();
+export default class Document extends NextDocument {
+  static async getInitialProps (ctx) {
+    const styledComponentSheet = new StyledComponentSheets()
+    const materialUiSheets = new MaterialUiServerStyleSheets()
+    const originalRenderPage = ctx.renderPage
 
-    // see https://github.com/nfl/react-helmet#server-usage for more information
-    // 'head' was occupied by 'renderPage().head', we cannot use it
-    return { ...page, styleTags, helmet: Helmet.rewind() };
-  }
+    try {
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: App => props =>
+            styledComponentSheet.collectStyles(
+              materialUiSheets.collect(<App {...props} />),
+            ),
+        })
 
-  // should render on <html>
-  helmetHtmlAttrComponents() {
-    return this.props.helmet.htmlAttributes.toComponent();
-  }
+      const initialProps = await NextDocument.getInitialProps(ctx)
 
-  // should render on <head>
-  helmetHeadComponents() {
-    const keys = Object.keys(this.props.helmet)
-      .filter(el => !(el === 'htmlAttributes' || el === 'title'))
-      .map(el => this.props.helmet[el].toComponent())
-      .filter(
-        el =>
-          el.length > 0 ||
-          !(Object.keys(el).length === 0 && el.constructor === Object)
-      );
-
-    return keys.length ? keys : [];
+      return {
+        ...initialProps,
+        styles: [
+          <React.Fragment key="styles">
+            {initialProps.styles}
+            {materialUiSheets.getStyleElement()}
+            {styledComponentSheet.getStyleElement()}
+          </React.Fragment>,
+        ],
+      }
+    } finally {
+      styledComponentSheet.seal()
+    }
   }
 
   render() {
     return (
-      <html lang="en" {...this.helmetHtmlAttrComponents()}>
-        <Head>
-          <meta name="robots" content="index,follow" />
-          <meta httpEquiv="expires" content="10800" />
-          {this.helmetHeadComponents()}
-          {AppIcons()}
-          {this.props.styleTags}
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
+      <html lang="en">
+      <Head>
+        <meta name="robots" content="index,follow" />
+        <meta httpEquiv="expires" content="10800" />
+      </Head>
+      <body>
+      <Main />
+      <NextScript />
+      </body>
       </html>
     );
   }

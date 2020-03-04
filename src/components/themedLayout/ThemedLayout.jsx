@@ -1,11 +1,19 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import { App as ThemedApp } from 'themes/AppTheme';
-import { getCurrentTheme } from '../../themes/selector';
-import themeList from '../../themes/themeList';
+import { getCurrentTheme } from 'themes/selector';
+import themeList from 'themes/themeList';
 import color from 'color';
 import { connect } from 'react-redux';
+import { ThemeProvider as StyledThemeProvider, createGlobalStyle } from 'styled-components'
+import { ThemeProvider as MaterialThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+const theme = {
+  primary: '#f2f2f2',
+  ...createMuiTheme()
+};
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -26,13 +34,17 @@ const ThemedLayout = ({ children, themeName }) => {
     return themeList[activeThemeName];
   };
 
+  const activeTheme = getActiveTheme();
+
   return (
-    <ThemeProvider theme={getActiveTheme()}>
-      <ThemedApp>
-        <GlobalStyle/>
-        {children}
-      </ThemedApp>
-    </ThemeProvider>
+    <StyledThemeProvider theme={activeTheme}>
+      <GlobalStyle/>
+      <MaterialThemeProvider theme={activeTheme}>
+        <ThemedApp>
+          {children}
+        </ThemedApp>
+      </MaterialThemeProvider>
+    </StyledThemeProvider>
   );
 };
 

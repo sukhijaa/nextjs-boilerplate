@@ -8,6 +8,7 @@ const routes = [
   {label: 'Home', name: ROUTE_NAMES.INDEX},
   {label: 'Articles', name: ROUTE_NAMES.ARTICLES, params: {}},
   {label: 'Details', name: ROUTE_NAMES.DETAILS, params: {}},
+  {label: 'Authors', name: ROUTE_NAMES.AUTHORS},
   {
     label: 'Test Route',
     name: ROUTE_NAMES.TEST_SINGLE_ARTICLE,

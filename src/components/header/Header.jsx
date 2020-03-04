@@ -1,8 +1,14 @@
 import React from 'react';
-import { HeaderLinkWrapper, HeaderLocaleThemeWrapper, HeaderSingleLink, HeaderWrapper, StyledLink } from './component';
+import {
+  HeaderLocaleThemeWrapper,
+  HeaderWrapper,
+} from './component';
 import ThemeChanger from 'components/themeChanger';
-import { LocaleChanger } from 'components/localeChange';
-import { Link, ROUTE_NAMES } from 'server/routes';
+import {LocaleChanger} from 'components/localeChange';
+import {Link, ROUTE_NAMES} from 'server/routes';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
 const routes = [
   {label: 'Home', name: ROUTE_NAMES.INDEX},
@@ -17,7 +23,7 @@ const routes = [
       slug2: 'myslug2',
       slug3: 'myslug3',
       slug4: 'myslug4',
-      isTest: true
+      isTest: true,
     },
   },
 ];
@@ -29,15 +35,15 @@ const Header = props => {
         <ThemeChanger />
         <LocaleChanger />
       </HeaderLocaleThemeWrapper>
-      <HeaderLinkWrapper>
-        {routes.map(route => (
-          <HeaderSingleLink key={route.name}>
-            <Link route={route.name} params={route.params}>
-              <StyledLink>{route.label}</StyledLink>
+      <AppBar position={'static'}>
+        <Tabs variant={'fullWidth'}>
+          {routes.map(route => (
+            <Link route={route.name} params={route.params} key={route.name}>
+              <Tab label={route.label} />
             </Link>
-          </HeaderSingleLink>
-        ))}
-      </HeaderLinkWrapper>
+          ))}
+        </Tabs>
+      </AppBar>
     </HeaderWrapper>
   );
 };

@@ -1,0 +1,44 @@
+{
+	"presets": [
+		"next/babel"
+],
+	"env": {
+		"test": {
+			"presets": [
+				["next/babel", {
+					"preset-env": {
+						"modules": "commonjs"
+					}
+				}]
+			]
+		}
+	},
+	"plugins": [
+	[
+		"@babel/plugin-proposal-decorators",
+		{
+			"legacy": true
+		}
+	],
+	[
+		"@babel/plugin-proposal-class-properties"
+	],
+		["@babel/transform-runtime"],
+	[
+		"module-resolver",
+		{
+			"alias": {
+        "store": "./src/store",
+        "utils": "./src/utils",
+        "containers": "./src/containers",
+        "components": "./src/components",
+        "hocs": "./src/hocs",
+        "translations": "./src/translations",
+        "themes": "./src/themes",
+        "server": "./server",
+        "seo": "./src/seo"
+      }
+		}
+	]
+]
+}

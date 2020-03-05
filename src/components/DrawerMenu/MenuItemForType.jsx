@@ -6,17 +6,20 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItem from '@material-ui/core/ListItem';
 import {Link, ROUTE_NAMES} from 'server/routes';
+import Icons from 'components/icons';
 
 const MenuItemForType = props => {
   const {
     itemType,
     label,
-    icon,
+    iconName,
     linkTypeParams,
     linkTypeRouteName,
     onClick,
     identifier,
   } = props;
+
+  const icon = Icons.RENDERED_ICONS[iconName] || null;
 
   const handleMenuItemClick = () => onClick(identifier);
 
@@ -49,7 +52,7 @@ MenuItemForType.propTypes = {
   itemType: PropTypes.oneOf(MENU_ITEM_TYPES),
   label: PropTypes.string,
   onClick: PropTypes.func,
-  icon: PropTypes.object,
+  iconName: PropTypes.string,
   linkTypeRouteName: PropTypes.string,
   linkTypeParams: PropTypes.object,
   identifier: PropTypes.any,
@@ -59,7 +62,7 @@ MenuItemForType.defaultProps = {
   itemType: ALLOWED_MENU_ITEMS.DIVIDER,
   label: '',
   onClick: () => {},
-  icon: null,
+  iconName: '',
   linkTypeRouteName: ROUTE_NAMES.INDEX,
   linkTypeParams: {},
   identifier: 0,

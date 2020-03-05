@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { CHANGE_ACTIVE_ARTICLE, changeActiveArticle, UPDATE_ARTICLES, updateArticles } from './actions';
-import { APIEndpoints, buildURL, HTTP } from '../../utils/HTTPRequests';
+import { APIEndpoints, buildURL, HTTP } from 'utils/HTTPRequests';
 
 function* fetchArticles(action) {
   const { base } = action.payload;

@@ -66,14 +66,15 @@ function DrawerMenu(props) {
           </IconButton>
         </div>
         {
-          menuItems.map(menuItem => {
-            const {label, icon, onClick, itemType, identifier, linkRouteName, linkRouteParams} = menuItem;
+          menuItems.map((menuItem, index) => {
+            const {label, iconName, onClick, itemType, identifier, linkRouteName, linkRouteParams} = menuItem;
 
             return (
               <MenuItemForType
+                key={identifier || index}
                 identifier={identifier}
                 itemType={itemType}
-                icon={icon}
+                iconName={iconName}
                 label={label}
                 onClick={onClick}
                 linkTypeParams={linkRouteParams}
@@ -99,7 +100,7 @@ DrawerMenu.propTypes = {
   menuItems: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
-      icon: PropTypes.object,
+      iconName: PropTypes.object,
       onClick: PropTypes.func,
       itemType: PropTypes.oneOf(MENU_ITEM_TYPES),
       identifier: PropTypes.any,

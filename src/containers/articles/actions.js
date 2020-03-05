@@ -1,4 +1,4 @@
-import { actionCreator, actionTypeCreator } from '../../store/actionCreators';
+import { actionCreator, actionTypeCreator } from 'store/actionCreators';
 
 export const UPDATE_ARTICLES = actionTypeCreator('articles/update');
 export const CHANGE_ACTIVE_ARTICLE = actionTypeCreator('articles/changeActive');

@@ -1,5 +1,5 @@
 import produce from 'immer';
-import {UPDATE_SELECTED_OPTION, UPDATE_MENU_OPTIONS} from './actions';
+import {UPDATE_SELECTED_OPTION, UPDATE_MENU_OPTIONS, TOGGLE_DRAWER} from './actions';
 import * as MenuOptions from './menuOptions';
 
 const initialState = {
@@ -14,7 +14,8 @@ const initialState = {
     MenuOptions.CHANGE_THEME_MENU_OPTION,
   ],
   selectedOption: {},
-  menuTitle: 'HyperDew NextJS'
+  menuTitle: 'HyperDew NextJS',
+  isOpen: false
 };
 
 export default (state = initialState, action) =>
@@ -26,6 +27,10 @@ export default (state = initialState, action) =>
       }
       case UPDATE_MENU_OPTIONS.SUCCESS: {
         draft.selectedOption = action.payload;
+        break;
+      }
+      case TOGGLE_DRAWER.SUCCESS: {
+        draft.isOpen = !state.isOpen;
         break;
       }
       default: {

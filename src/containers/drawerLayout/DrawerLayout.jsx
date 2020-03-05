@@ -1,23 +1,33 @@
 import React from 'react';
-import DrawerHeader from 'components/drawerHeader';
-import {useInjectReducer} from "../../store/injectReducer";
+import {createStructuredSelector} from 'reselect';
+import {getAllMenuOptions, getMenuTitle, isDrawerOpen} from './selectors';
+import {useSelector, useDispatch} from 'react-redux';
+import DrawerMenu from 'components/DrawerMenu';
+import {TOGGLE_DRAWER, toggleDrawer} from "./actions";
+import {useInjectSaga} from "../../store/injectSaga";
 import {REDUCER_STORE_KEY} from "./constants";
-import MenuOptionsReducer from './reducers';
-import {createStructuredSelector} from "reselect";
-import {getAllMenuOptions, getMenuTitle} from "./selectors";
-import {useSelector} from "react-redux";
+import saga from './saga';
 
 const stateSelector = createStructuredSelector({
   menuOptions: getAllMenuOptions,
-  menuTitle: getMenuTitle
+  menuTitle: getMenuTitle,
+  drawerOpen: isDrawerOpen,
 });
 
 const DrawerLayout = props => {
+  useInjectSaga({key: REDUCER_STORE_KEY, saga});
   const {children} = props;
 
-  const {menuOptions, menuTitle} = useSelector(stateSelector) || {};
+  const {menuOptions, menuTitle, drawerOpen} = useSelector(stateSelector) || {};
+  const dispatch = useDispatch();
 
-  return <DrawerHeader menuOptions={menuOptions} menuTitle={menuTitle}>{children}</DrawerHeader>;
+  const handleDrawerToggle = () => dispatch(toggleDrawer.Request());
+
+  return (
+    <DrawerMenu menuItems={menuOptions} menuTitle={menuTitle} show={drawerOpen} handleMenuToggle={handleDrawerToggle}>
+      {children}
+    </DrawerMenu>
+  );
 };
 
 export default DrawerLayout;

@@ -17,3 +17,8 @@ export const getMenuTitle = createSelector(
   selectMenuSubstore,
   menuState => menuState.menuTitle
 );
+
+export const isDrawerOpen = createSelector(
+  selectMenuSubstore,
+  menuState => menuState.isOpen
+);

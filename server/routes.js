@@ -2,7 +2,6 @@ const routes = require('next-router')();
 
 const ROUTE_NAMES = {
   INDEX: 'index',
-  DETAILS: 'details',
   ARTICLES: 'articles',
   SINGLE_ARTICLE: 'article',
   TEST_SINGLE_ARTICLE: 'testSingle',
@@ -11,7 +10,6 @@ const ROUTE_NAMES = {
 
 const ALL_ROUTES = [
   {name: ROUTE_NAMES.INDEX, pattern: '/', page: 'index'},
-  {name: ROUTE_NAMES.DETAILS, pattern: '/details', page: 'details'},
   {name: ROUTE_NAMES.ARTICLES, pattern: '/articles', page: 'articles'},
   {name: ROUTE_NAMES.AUTHORS, pattern: '/authors', page: 'allAuthors'},
   {

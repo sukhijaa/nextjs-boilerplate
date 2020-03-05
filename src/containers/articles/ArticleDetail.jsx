@@ -8,7 +8,6 @@ import {
   ArticleDetailWrapper
 } from './styledComponents';
 import { ThemedLayout } from 'components/themedLayout';
-import { Header } from 'components/header';
 import { useRouter } from 'next/router';
 
 const ArticleDetail = props => {
@@ -18,7 +17,6 @@ const ArticleDetail = props => {
 
   return (
     <ThemedLayout>
-      <Header />
       <ArticleDetailWrapper>
         <ArticleDetailTitle>{articleDetail.title}</ArticleDetailTitle>
         <ArticleDetailAuthor>

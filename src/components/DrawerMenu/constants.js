@@ -1,0 +1,11 @@
+export const ALLOWED_MENU_ITEMS = {
+  MENU_ITEM: 'item',
+  LINK: 'link',
+  DIVIDER: 'divider'
+};
+
+export const MENU_ITEM_TYPES = [
+  ALLOWED_MENU_ITEMS.DIVIDER,
+  ALLOWED_MENU_ITEMS.LINK,
+  ALLOWED_MENU_ITEMS.DIVIDER
+];

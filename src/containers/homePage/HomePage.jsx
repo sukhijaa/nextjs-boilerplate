@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {ThemedLayout} from 'components/themedLayout';
-import {Header} from 'components/header';
 import {DescriptionCard} from 'components/descriptionCard';
 import {connect} from 'react-redux';
 import {getAllArticles} from '../articles/selectors';
@@ -15,7 +14,6 @@ function HomePage(props) {
     <ThemedLayout>
       <NextSeo {...OG_SEO_CONFIG} />
       <ArticleJsonLd {...JSON_LD_SEO_CONFIG} />
-      <Header />
       {articles.map(article => {
         return (
           <DescriptionCard

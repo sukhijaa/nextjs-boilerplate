@@ -1,29 +1,14 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { App as ThemedApp } from 'themes/AppTheme';
 import { getCurrentTheme } from 'themes/selector';
 import themeList from 'themes/themeList';
 import color from 'color';
 import { connect } from 'react-redux';
-import { ThemeProvider as StyledThemeProvider, createGlobalStyle } from 'styled-components'
-import { ThemeProvider as MaterialThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-
-const theme = {
-  primary: '#f2f2f2',
-  ...createMuiTheme()
-};
-
-const GlobalStyle = createGlobalStyle`
-  * {
-    font-family: Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
-  }
-  body {
-    margin: 0;
-    padding: 0;
-  }
-`;
+import { ThemeProvider as StyledThemeProvider } from 'styled-components'
+import { ThemeProvider as MaterialThemeProvider } from '@material-ui/core/styles';
+import DrawerMenu from "components/DrawerMenu";
+import DrawerHeader from 'components/drawerHeader';
 
 const ThemedLayout = ({ children, themeName }) => {
 
@@ -38,11 +23,11 @@ const ThemedLayout = ({ children, themeName }) => {
 
   return (
     <StyledThemeProvider theme={activeTheme}>
-      <GlobalStyle/>
       <MaterialThemeProvider theme={activeTheme}>
-        <ThemedApp>
+        <CssBaseline/>
+        <DrawerHeader>
           {children}
-        </ThemedApp>
+        </DrawerHeader>
       </MaterialThemeProvider>
     </StyledThemeProvider>
   );
@@ -53,7 +38,7 @@ ThemedLayout.defaultProps = {
 };
 
 ThemedLayout.propTypes = {
-  children: PropTypes.array.isRequired,
+  children: PropTypes.any.isRequired,
   theme: PropTypes.string
 };
 

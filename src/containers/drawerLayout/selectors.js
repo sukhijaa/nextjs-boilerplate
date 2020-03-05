@@ -15,10 +15,10 @@ export const getSelectedMenu = createSelector(
 
 export const getMenuTitle = createSelector(
   selectMenuSubstore,
-  menuState => menuState.menuTitle
+  menuState => menuState.menuTitle,
 );
 
 export const isDrawerOpen = createSelector(
   selectMenuSubstore,
-  menuState => menuState.isOpen
+  menuState => menuState.isOpen,
 );

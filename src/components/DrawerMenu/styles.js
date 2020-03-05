@@ -48,6 +48,7 @@ export default makeStyles(theme => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     marginLeft: -drawerWidth,
+    background: theme.colors.background
   },
   contentShift: {
     transition: theme.transitions.create('margin', {

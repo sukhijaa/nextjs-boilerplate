@@ -7,6 +7,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItem from '@material-ui/core/ListItem';
 import {Link, ROUTE_NAMES} from 'server/routes';
 import Icons from 'components/icons';
+import {LocaleChanger} from "components/localeChange";
+import ThemeChanger from "components/themeChanger";
 
 const MenuItemForType = props => {
   const {
@@ -44,6 +46,12 @@ const MenuItemForType = props => {
           </ListItem>
         </Link>
       );
+    }
+    case ALLOWED_MENU_ITEMS.CHANGE_LOCALE: {
+      return <LocaleChanger/>
+    }
+    case ALLOWED_MENU_ITEMS.CHANGE_THEME: {
+      return <ThemeChanger/>
     }
   }
 };

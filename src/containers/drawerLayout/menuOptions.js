@@ -7,7 +7,7 @@ import Icons from "components/icons";
 
 const doNothing = () => {};
 
-const {LINK, MENU_ITEM, DIVIDER} = DrawerMenu.ALLOWED_TYPES;
+const {LINK, MENU_ITEM, DIVIDER, CHANGE_LOCALE, CHANGE_THEME} = DrawerMenu.ALLOWED_TYPES;
 
 export const DIVIDER_MENU_ITEM = {
   itemType: DIVIDER,
@@ -49,15 +49,17 @@ export const SINGLE_ARTICLE_TEST_PAGE_MENU = {
 };
 
 export const CHANGE_LOCALE_MENU_OPTION = {
-  itemType: MENU_ITEM,
+  itemType: CHANGE_LOCALE,
   label: 'Change Locale',
   iconName: Icons.ALLOWED_ICONS.TRANSLATION_ICON,
   onClick: doNothing,
+  identifier: 'localeOption'
 };
 
 export const CHANGE_THEME_MENU_OPTION = {
-  itemType: MENU_ITEM,
+  itemType: CHANGE_THEME,
   label: 'Change Theme',
   iconName: Icons.ALLOWED_ICONS.COLOR_PALLETE,
   onClick: doNothing,
+  identifier: 'themeOption'
 };

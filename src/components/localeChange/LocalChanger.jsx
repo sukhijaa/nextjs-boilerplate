@@ -1,5 +1,9 @@
 import React from 'react';
-import { LANGUAGE_NAMES, withTranslation } from 'translations/i18n';
+import { withTranslation } from 'translations/i18n';
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import ListItem from "@material-ui/core/ListItem";
+import Icon from 'components/icons';
 
 @withTranslation('common')
 export default class LocaleChanger extends React.Component {
@@ -9,32 +13,13 @@ export default class LocaleChanger extends React.Component {
   };
 
   render() {
-    const { t, i18n } = this.props;
+    const { t } = this.props;
 
     return (
-      <main>
-        <span className={'current-language'}>{t('currentLang')}</span>:
-        <span className={'language-name'}>{LANGUAGE_NAMES[i18n.language]}</span>
-        <span className={'change-language'} onClick={this.handleLanguageChange}>
-          Change
-        </span>
-        <style jsx>{`
-          main {
-            margin: 2px;
-            border: 1px solid black;
-            display: flex;
-            align-items: center;
-          }
-          .language-name {
-            padding: 0 20px;
-            font-weight: bold;
-          }
-          .change-language {
-            color: blue;
-            cursor: pointer;
-          }
-        `}</style>
-      </main>
+      <ListItem button onClick={this.handleLanguageChange}>
+        <ListItemIcon>{Icon.RENDERED_ICONS[Icon.ALLOWED_ICONS.TRANSLATION_ICON]}</ListItemIcon>
+        <ListItemText primary={t('changeLang')} />
+      </ListItem>
     )
   }
 }

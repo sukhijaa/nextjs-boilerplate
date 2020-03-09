@@ -1,13 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, ROUTE_NAMES } from 'server/routes';
-import {
-  DescriptionCardAuthor,
-  DescriptionCardDesc,
-  DescriptionCardTitle,
-  DescriptionCardWrapper,
-  LinkText
-} from './component';
+import {Link, ROUTE_NAMES} from 'server/routes';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import useStyles from './styles';
 
 const getSlugFromTitle = (title = '') => {
   let slug = '';
@@ -25,19 +21,24 @@ const getSlugFromTitle = (title = '') => {
 
 const DescriptionCard = props => {
   const {title, description, author} = props;
+  const classes = useStyles();
 
   const slug = getSlugFromTitle(title);
 
   return (
-    <DescriptionCardWrapper>
-      <DescriptionCardTitle>
-        <Link route={ROUTE_NAMES.SINGLE_ARTICLE} params={{slug}}>
-          <LinkText>{title}</LinkText>
-        </Link>
-      </DescriptionCardTitle>
-      <DescriptionCardAuthor>{`Author : ${author}`}</DescriptionCardAuthor>
-      <DescriptionCardDesc>{description}</DescriptionCardDesc>
-    </DescriptionCardWrapper>
+    <Paper elevation={3} className={classes.paper}>
+      <Link route={ROUTE_NAMES.SINGLE_ARTICLE} params={{slug}}>
+        <Typography className={classes.titleWrapper} color={'primary'} align={'center'}>
+          {title}
+        </Typography>
+      </Link>
+      <Typography title={'Author'} color={"textSecondary"} align={'center'}>
+        {`Author : ${author}`}
+      </Typography>
+      <Typography align={'justify'} className={classes.descriptionWrapper}>
+        {description}
+      </Typography>
+    </Paper>
   );
 };
 

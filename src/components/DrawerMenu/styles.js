@@ -57,7 +57,7 @@ export default makeStyles(theme => ({
     }),
     marginLeft: 0,
   },
-  loginButton: {
+  loginComponent: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',

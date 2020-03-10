@@ -1,5 +1,7 @@
 import reducer from './reducer';
 import saga from './saga';
-import {ARTICLE_REDUCER_KEY as key} from './constants';
+import {REDUCER_STORE_KEY} from './constants';
+
+const key = REDUCER_STORE_KEY;
 
 export default {reducer, saga, key};

@@ -1,23 +1,17 @@
-import { combineReducers } from 'redux';
-import ThemeReducer from 'themes/reducer';
-import ArticleReducer from 'containers/articles/reducer';
-import AuthorReducer from 'containers/authors/reducers';
+import {combineReducers} from 'redux';
+import ThemeReducer from 'themes';
+import ArticleReducer from 'containers/articles';
+import AuthorReducer from 'containers/authors';
 import MenuReducer from 'containers/drawerLayout/reducers';
-import {REDUCER_STORE_KEY} from "../containers/drawerLayout/constants";
-
-const THEME_KEY = 'theme';
-const ARTICLE_KEY = 'articles';
-const AUTHOR_KEY = 'author';
+import {REDUCER_STORE_KEY} from 'containers/drawerLayout/constants';
+import LoginReducers from 'containers/login';
 
 export default (injectedReducers = {}) =>
   combineReducers({
-    [THEME_KEY]: ThemeReducer,
-    [ARTICLE_KEY]: ArticleReducer,
-    [AUTHOR_KEY]: AuthorReducer,
+    [ThemeReducer.key]: ThemeReducer.reducer,
+    [ArticleReducer.key]: ArticleReducer.reducer,
+    [AuthorReducer.key]: AuthorReducer.reducer,
     [REDUCER_STORE_KEY]: MenuReducer,
-    ...injectedReducers
+    [LoginReducers.key]: LoginReducers.reducer,
+    ...injectedReducers,
   });
-
-export const selectThemeSubStore = store => store[THEME_KEY];
-export const selectArticlesSubStore = store => store[ARTICLE_KEY];
-export const selectAuthorSubStore = store => store[AUTHOR_KEY];

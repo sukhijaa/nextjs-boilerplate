@@ -1,7 +1,7 @@
 import React from 'react';
 import { changeActiveArticle } from 'containers/articles/actions';
 import { getBaseURLFromContext } from 'utils/HTTPRequests';
-import { ArticleDetail } from 'containers/articles';
+import ArticleDetail  from './ArticleDetail';
 
 function ArticleDetails() {
   return <ArticleDetail/>;

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {ALLOWED_MENU_ITEMS, MENU_ITEM_TYPES} from './constants';
+import {ALLOWED_MENU_ITEMS, MENU_ITEM_TYPES} from '../constants';
 import Divider from '@material-ui/core/Divider';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';

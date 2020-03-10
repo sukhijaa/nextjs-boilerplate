@@ -7,18 +7,22 @@ import {toggleDrawer} from './actions';
 import {useInjectSaga} from 'store/injectSaga';
 import {REDUCER_STORE_KEY} from './constants';
 import saga from './saga';
+import {isUserLoggedIn} from 'containers/login/selector';
+import LoginStateButton from './components/LoginStateButton';
 
 const stateSelector = createStructuredSelector({
   menuOptions: getAllMenuOptions,
   menuTitle: getMenuTitle,
   drawerOpen: isDrawerOpen,
+  loggedIn: isUserLoggedIn,
 });
 
 const DrawerLayout = props => {
   useInjectSaga({key: REDUCER_STORE_KEY, saga});
   const {children} = props;
 
-  const {menuOptions, menuTitle, drawerOpen} = useSelector(stateSelector) || {};
+  const {menuOptions, menuTitle, drawerOpen, loggedIn} =
+    useSelector(stateSelector) || {};
 
   const dispatch = useDispatch();
 
@@ -29,6 +33,7 @@ const DrawerLayout = props => {
       menuItems={menuOptions}
       menuTitle={menuTitle}
       show={drawerOpen}
+      loginComponent={<LoginStateButton/>}
       handleMenuToggle={handleDrawerToggle}
     >
       {children}

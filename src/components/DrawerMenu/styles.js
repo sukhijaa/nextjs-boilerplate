@@ -57,4 +57,14 @@ export default makeStyles(theme => ({
     }),
     marginLeft: 0,
   },
+  loginButton: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    flexGrow: 100,
+    cursor: 'pointer'
+  },
+  cursorPointer: {
+    cursor: 'pointer'
+  }
 }));

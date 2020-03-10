@@ -13,9 +13,10 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import {MENU_ITEM_TYPES} from './constants';
 import MenuItemForType from './MenuItemForType';
 import useStyles from './styles';
+import {Link, ROUTE_NAMES} from 'server/routes';
 
 function DrawerMenu(props) {
-  const {menuItems, menuTitle, handleMenuToggle, show} = props;
+  const {menuItems, menuTitle, handleMenuToggle, show, loggedIn, userName} = props;
   const classes = useStyles();
   const theme = useTheme();
 
@@ -35,9 +36,24 @@ function DrawerMenu(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
-            {menuTitle}
-          </Typography>
+          <Link route={ROUTE_NAMES.INDEX}>
+            <Typography variant="h6" noWrap className={classes.cursorPointer}>
+              {menuTitle}
+            </Typography>
+          </Link>
+          {
+            <div className={classes.loginButton}>
+              {
+                loggedIn ?
+                  userName :
+                  <Link route={ROUTE_NAMES.LOGIN}>
+                    <Typography variant={'h6'}>
+                      Login
+                    </Typography>
+                  </Link>
+              }
+            </div>
+          }
         </Toolbar>
       </AppBar>
       <Drawer
@@ -111,6 +127,8 @@ DrawerMenu.propTypes = {
   ),
   handleMenuToggle: PropTypes.func,
   show: PropTypes.bool,
+  loggedIn: PropTypes.bool,
+  userName: PropTypes.string
 };
 
 DrawerMenu.defaultProps = {
@@ -118,6 +136,8 @@ DrawerMenu.defaultProps = {
   menuItems: [],
   handleMenuToggle: () => {},
   show: false,
+  loggedIn: false,
+  userName: 'Logout'
 };
 
 export default DrawerMenu;

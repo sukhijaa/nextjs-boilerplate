@@ -7,6 +7,7 @@ const ROUTE_NAMES = {
   TEST_SINGLE_ARTICLE: 'testSingle',
   AUTHORS: 'authors',
   EDITOR: 'editor',
+  LOGIN: 'login'
 };
 
 const ALL_ROUTES = [
@@ -24,6 +25,7 @@ const ALL_ROUTES = [
     page: 'articleDetails',
   },
   {name: ROUTE_NAMES.EDITOR, pattern: '/editor', page: 'editor'},
+  {name: ROUTE_NAMES.LOGIN, pattern:'/login', page: 'login'}
 ];
 
 ALL_ROUTES.forEach(route => routes.add(route));

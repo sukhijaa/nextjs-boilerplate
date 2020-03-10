@@ -43,6 +43,7 @@ themeList.main = {
     background: '#ffffff',
     text: '#000000',
     textAlt: '#ffffff',
+    borderLight: 'rgba(0, 0, 0, 0.42)',
     textReadonly: color.rgb(237, 202, 216)
   },
   ...createMuiTheme()

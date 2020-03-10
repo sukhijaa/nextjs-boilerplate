@@ -48,6 +48,13 @@ export const SINGLE_ARTICLE_TEST_PAGE_MENU = {
   },
 };
 
+export const ARTICLE_EDITOR = {
+  itemType: LINK,
+  label: 'Editor',
+  iconName: Icons.ALLOWED_ICONS.ADDITION_ICON,
+  linkRouteName: ROUTE_NAMES.EDITOR
+};
+
 export const CHANGE_LOCALE_MENU_OPTION = {
   itemType: CHANGE_LOCALE,
   label: 'Change Locale',

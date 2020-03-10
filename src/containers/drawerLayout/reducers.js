@@ -7,6 +7,7 @@ const initialState = {
     MenuOptions.HOME_MENU_ITEM_PROPS,
     MenuOptions.ARTICLES_MENU_ITEM_PROPS,
     MenuOptions.AUTHORS_MENU_ITEM_PROPS,
+    MenuOptions.ARTICLE_EDITOR,
     MenuOptions.DIVIDER_MENU_ITEM,
     MenuOptions.SINGLE_ARTICLE_TEST_PAGE_MENU,
     MenuOptions.DIVIDER_MENU_ITEM,

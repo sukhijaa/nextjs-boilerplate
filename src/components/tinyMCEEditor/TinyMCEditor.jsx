@@ -21,6 +21,7 @@ export default class TinyMCEEditor extends React.Component {
         </Head>
         <Editor
           initialValue="<p>This is the initial content of the editor</p>"
+          apiKey={'yv40zlzn9i27qfj1wxdbi6pud7bxehmit5kb2k6ex0a5nft5'}
           init={{
             height: 500,
             menubar: false,

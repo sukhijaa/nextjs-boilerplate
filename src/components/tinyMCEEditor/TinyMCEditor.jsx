@@ -16,9 +16,6 @@ export default class TinyMCEEditor extends React.Component {
   render() {
     return (
       <div>
-        <Head>
-          <script type={'text/javascripti'} src={'/tinymce/tinymce.min.js'}/>
-        </Head>
         <Editor
           initialValue="<p>This is the initial content of the editor</p>"
           apiKey={'yv40zlzn9i27qfj1wxdbi6pud7bxehmit5kb2k6ex0a5nft5'}

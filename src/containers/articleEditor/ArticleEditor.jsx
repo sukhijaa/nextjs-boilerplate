@@ -1,13 +1,14 @@
 import React from 'react';
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
+import {RedirectToLogin} from 'hocs';
 
 const DynamicComponentWithNoSSR = dynamic(
   () => import('components/tinyMCEEditor'),
-  { ssr: false }
-)
+  {ssr: false},
+);
 
 const ArticleEditor = props => {
   return <DynamicComponentWithNoSSR />;
 };
 
-export default ArticleEditor;
+export default RedirectToLogin()(ArticleEditor);
